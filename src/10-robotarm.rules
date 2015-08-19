@@ -1,0 +1,2 @@
+SUBSYSTEMS=="usb", ATTRS{idProduct}=="0000", GROUP="users"
+

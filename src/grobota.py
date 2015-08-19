@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Gooey Robot Arm 
 # see http://www.penguintutor.com/grobot
 # grobota.py 
@@ -591,6 +591,9 @@ def loop():
 		# update screen with changes
 		pygame.display.update()
 		FPSCLOCK.tick(FPS)
+		
+		# Delay to reduce CPU utilization
+		time.sleep (0.2)
 
 
 

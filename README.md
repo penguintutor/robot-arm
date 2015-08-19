@@ -1,14 +1,12 @@
 # robot-arm
 GUI application for a USB robot arm
 
-Work in progress
-================
+## Work in progress
 
 This is an early availability release. The software is still work in progress and this document mentions features that are not yet implemented. 
 
 
-Introduction
-============
+## Introduction
 
 Gooey Robot Arm is a GUI application to control the Maplin Robot Arm. This is designed for use with the Raspberry Pi running Linux, but should work with any Linux computer. It should work with Windows as well, but setup may be a bit tricky on Windows.
 
@@ -22,9 +20,43 @@ This page provides some of the information for developers wanting to understand 
 
 The code is well documented within the code, but this explains some of the high-level information and reasons for why some of the things are delivered as they are.
 
+## Install
 
-Install
-=======
+The instructions are provided for Linux only. The application has not been tested on other operating systems and is unlikely to be until much later in the development. The program uses Python which is currently available in two main versions: version 2.* and version 3.* (referred to as Python 2 and Python 3). 
+
+Python 3 is the preferred distribution, however on some Linux distrutions, the install for Python 3 can be harder, so instructions for python 2 are included.
+
+
+### Install for the Raspberry Pi
+
+The Raspberry Pi is the easiest platform to install this on as it includes Python 3 Pygame as default. Instructions are therefore provided for Python 3 only. There is however an additional step that is required to provide permissions to access the device.
+
+
+First download pyusb using:
+
+wget https://github.com/walac/pyusb/tarball/master -O walac-pyusb.tar.gz
+
+
+unzip and cd to the directory 
+(actual directory name depends upon the latest version of pyusb) 
+
+tar -xvzf walac-pyusb.tar.gz
+cd walac-pyusb-*
+
+sudo python3 setup.py install
+
+Download the source code
+git clone https://github.com/penguintutor/robot-arm.git
+
+
+Copy the Udev USB rule using
+sudo cp robot-arm/src/10-robotarm.rules /etc/udev/rules.d/
+
+You can now launch the app by changing to the src directory and running grobota.py
+
+
+## Install for other Linux distributions
+
 
 The instructions are provided for Linux only. The application has not been tested on other operating systems and is unlikely to be until much later in the development. The program uses Python which is currently available in two main versions: version 2.* and version 3.* (referred to as Python 2 and Python 3). I normally create new projects for Python 3 however depending upon the actual distribution at the moment the install for Python 3 can be significantly harder. Therefore instructions for Python 2 are provided first.
 
