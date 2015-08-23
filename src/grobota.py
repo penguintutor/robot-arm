@@ -593,7 +593,7 @@ def loop():
 		FPSCLOCK.tick(FPS)
 		
 		# Delay to reduce CPU utilization
-		time.sleep (0.2)
+		#time.sleep (0.2)
 
 
 
