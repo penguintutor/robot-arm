@@ -1,24 +1,20 @@
 # robot-arm
-GUI application for a USB robot arm
-
-## Work in progress
-
-This is an early availability release. The software is still work in progress and this document mentions features that are not yet implemented. 
+# GUI application for a USB robot arm
 
 
 ## Introduction
 
-Gooey Robot Arm is a GUI application to control the Maplin Robot Arm. This is designed for use with the Raspberry Pi running Linux, but should work with any Linux computer. It should work with Windows as well, but setup may be a bit tricky on Windows.
+G-Robot Arm is a GUI application to control the cebekit Robot Arm. This is designed for use with the Raspberry Pi running Linux, but should work with any Linux computer. 
 
-The robot arm is also available through other retailers, often called an Education Robot Arm or similar, although they sometimes come with a handheld remote control rather than the USB interface. The robot arm needs the USB interface which can be purchased separately if it was not already included.
+The robot arm used for testing is the Maplin robot arm, but I believe it should also work with the Model C-6985 from CPC Farnell. The robot arm is also available through other retailers, often called an Education Robot Arm or similar, although they sometimes come with a handheld remote control rather than the USB interface. The robot arm needs the USB interface which can be purchased separately if it was not already included.
 
-The usb robot arm comes with Windows software only. This software has been written to control the arm from other computers in particular the Raspberry Pi educational computer with the Linux operating system. This software is provided free of charge under the GPL version 3 license which allows you to view and edit the source code and redistribute as along as you make any changes available as open source software through the same license.
+The usb robot arm comes with Windows software only. This software has been written to allow the robot arm to be controlled from other computers, in particular Linux based computers such as the Raspberry Pi educational computer. This software is provided free of charge under the GPL version 3 license which allows you to view and edit the source code and redistribute as along as you make any changes available as open source software through the same license.
 
-The application is similar to, but not the same as the Windows software. This application is written using a similar layout and key bindings to the Windows software, but uses a single application window to handle the realtime control as well as record and playback functionality (not yet included).
+The application is similar to the remote control software supplied for Windows, but only handling the realtime functionality. This application is written using a similar layout and key bindings to the Windows software, but does not currently have the record and playback functionality.
 
-This page provides some of the information for developers wanting to understand the software. If you just want to set the software up and run it then see the user documentation.
+This page provides some of the information for developers wanting to understand the software. If you just want to set the software up and run it then see the install instructions further down or at http://www.penguintutor.com/robotarm
 
-The code is well documented within the code, but this explains some of the high-level information and reasons for why some of the things are delivered as they are.
+The code is well documented within the source code, but this explains some of the high-level information and reasons for why some of the things are delivered as they are.
 
 ## Install
 
@@ -57,14 +53,11 @@ You can now launch the app by changing to the src directory and running grobota.
 
 ## Install for other Linux distributions
 
-
-The instructions are provided for Linux only. The application has not been tested on other operating systems and is unlikely to be until much later in the development. The program uses Python which is currently available in two main versions: version 2.* and version 3.* (referred to as Python 2 and Python 3). I normally create new projects for Python 3 however depending upon the actual distribution at the moment the install for Python 3 can be significantly harder. Therefore instructions for Python 2 are provided first.
-
-The pre-requisites for the applicaiton are: pygame, libusb and pyusb, but these then also have their own dependancies (particularly pygame for Python 3).
+The pre-requisites for the application are: pygame, libusb and pyusb, but these then also have their own dependancies (particularly pygame for Python 3).
 
 These instructions are for Debian (or Ubuntu) based distributions the commands may be different for other distributions.
 
-The first two can be installed using (this does not setup pygame for Python 3 though).
+The first two can be installed using (this does not setup pygame for Python 3 though only Python 2).
 
 sudo apt-get install python-pygame libusb-1.0-0
 
@@ -83,11 +76,11 @@ tar -xvzf walac-pyusb.tar.gz
 cd walac-pyusb-*
 
 sudo python setup.py install
-(or for Python 3)
+(and / or for Python 3)
 sudo python3 setup.py install
 
 
-Python 3 pygame
+###Python 3 pygame (optional)
 
 Whilst pygame will work on Python 3 it is not necessarily available through the distributions repositories. These instructions explain how to install it manually.
 This uses the current development version as at the time of writing the official release is 1.9.1 which will not work with Python 3.
@@ -105,17 +98,27 @@ python3 setup.py build
 sudo python3 setup.py install
 
 
+###Installing GRobotArm
 
+Download the source code
+git clone https://github.com/penguintutor/robot-arm.git
+
+You can now launch the app by changing to the src directory and running grobota.py
+
+If you get an error regarding permissions then you may also need to add the udev rule
+
+sudo cp robot-arm/src/10-robotarm.rules /etc/udev/rules.d/
+
+You can now launch the app by changing to the src directory and running grobota.py
 
 Programming style
 =================
 
 This has been written using Pygame. This is the first application I've written in Pygame and whilst Pygame and the programming method have provided flexibilty to create a friendly looking application, it did add some challenges in that certain functionality that is normally included by toolkits needed to be handled by my code. 
 
-I have avoided using object oriented programming for the GUI application influenced by Al Sweigart's book Making Games with Python & Pygame (see acknowledgments). This does make it easier to follow for new programmers that may struggle to grasp the object oriented concepts (it took me some time to grasp the paradigm when I first started OO programming). The downside is that to make it easier to follow I have had to create more global variables than I would normally like to. Many of these are variables that don't change "much". Technically they are not constants as they are updated, especially during the setup stage, but when treated as though they are constants by other functions then it is safe to treat them as though they were constants. I have created them using CAPITAL letters which convention states is normally only used for true constants. This is cheating, but hopefully cheating for the right reason. 
+I originally avoided using object oriented programming for the GUI application influenced by Al Sweigart's book Making Games with Python & Pygame (see acknowledgments). This does make it easier to follow for new programmers that may struggle to grasp the object oriented concepts (it took me some time to grasp the paradigm when I first started OO programming). The downside is that to make it easier to follow I have had to create more global variables than I would normally like to. Many of these are variables that don't change "much". Technically they are not constants as they are updated, especially during the setup stage, but when treated as though they are constants by other functions then it is safe to treat them as though they were constants. I have created them using CAPITAL letters which convention states is normally only used for true constants. This is cheating, but hopefully cheating for the right reason. 
 
 Whilst the idea of avoiding object oriented programming is a good idea when teaching programming, for a larger application this can make the code more complex. I have therefore refactored some of the code to use some object orientation and may looking at further rectoring to improve the code..
-
 
 
 Window layout
@@ -123,7 +126,6 @@ Window layout
 
 The window layout is designed for a fixed screen size of 800 x 600 pixels.
 Some of the placement is created dynamically during the startup to allow the different blocks to be positioned and spaced differently, but that would need significant additional code to handle dynamic resizing of the screen. Whilst some of the code is written so as to make changing this to dynamic window sizing easier, it is not planned to change it to a dyanmic window size at this time.
-
 
 
 Button lists (dictionaries)
@@ -174,10 +176,9 @@ Line 2: [url=http://www.penguintutor.com]www.penguintutor.com[/url]
 Todo / Future development
 =========================
 
-At the moment only real-time operation of the robot arm is included. In future I hope to add record and playback functionality.
+At the moment only real-time operation of the robot arm is included. In future I hope to add record and playback functionality. Space has been left at the right hand side of the screen so that this can be included in the one window.
 
 Hover doesn't do anything yet (perhaps add tooltips).
-
 
 
 Acnowledgements
