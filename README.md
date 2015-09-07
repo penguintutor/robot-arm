@@ -6,7 +6,7 @@
 
 G-Robot Arm is a GUI application to control the cebekit Robot Arm. This is designed for use with the Raspberry Pi running Linux, but should work with any Linux computer. 
 
-The robot arm used for testing is the Maplin robot arm, but I believe it should also work with the Model C-6985 from CPC Farnell. The robot arm is also available through other retailers, often called an Education Robot Arm or similar, although they sometimes come with a handheld remote control rather than the USB interface. The robot arm needs the USB interface which can be purchased separately if it was not already included.
+The robot arm used for testing is the Maplin robot arm, but I believe it should also work with the Cebek ModelC-6985 available from CPC Farnell. The robot arm is also available through other retailers, often called an Education Robot Arm or similar, although they sometimes come with a handheld remote control rather than the USB interface. The robot arm needs the USB interface which can be purchased separately if it was not already included.
 
 The usb robot arm comes with Windows software only. This software has been written to allow the robot arm to be controlled from other computers, in particular Linux based computers such as the Raspberry Pi educational computer. This software is provided free of charge under the GPL version 3 license which allows you to view and edit the source code and redistribute as along as you make any changes available as open source software through the same license.
 
