@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=G Robot Arm
+Comment=Robot Arm Controller
+Icon=/home/pi/.local/share/pixmaps/robotarmicon.png
+Path=/opt/robotarm/src/
+Exec=/opt/robotarm/src/grobota.py
+Terminal=false
+Categories=Robots;
