@@ -57,7 +57,7 @@ The pre-requisites for the application are: pygame, libusb and pyusb, but these 
 
 These instructions are for Debian (or Ubuntu) based distributions the commands may be different for other distributions.
 
-The first two can be installed using (this does not setup pygame for Python 3 though only Python 2).
+The first two can be installed using the instructions below (this does not setup pygame for Python 3 though only Python 2):
 
 sudo apt-get install python-pygame libusb-1.0-0
 
@@ -181,8 +181,8 @@ At the moment only real-time operation of the robot arm is included. In future I
 Hover doesn't do anything yet (perhaps add tooltips).
 
 
-Acnowledgements
-===============
+Acknowledgements
+================
 
 Although this program is my own work acknowledgements go to the following people whose resources I have used to assist in the creating of this program. 
 
