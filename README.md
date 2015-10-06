@@ -111,6 +111,14 @@ sudo cp robot-arm/src/10-robotarm.rules /etc/udev/rules.d/
 
 You can now launch the app by changing to the src directory and running grobota.py
 
+###Adding a start menu button
+
+If installing on a Raspberry Pi then the following will add the robotarm software to the LXDE start menu. This will only work on a Raspberry Pi using the default pi username.
+
+/opt/robotarm/src/startmenu/setupmenu.sh
+
+(or if running an older version of Raspbian prior to September 2015 use setupmenu-old.sh instead).
+
 Programming style
 =================
 
