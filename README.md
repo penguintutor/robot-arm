@@ -119,6 +119,29 @@ If installing on a Raspberry Pi then the following will add the robotarm softwar
 
 (or if running an older version of Raspbian prior to September 2015 use setupmenu-old.sh instead).
 
+###Installing ARobotArm
+
+The ARobotArm software adds support for the AstroPi buttons connected through a Raspberry Pi Sense Hat.
+
+The following additional steps are required:
+
+cd /boot/overlays
+sudo wget https://github.com/raspberrypilearning/astro-pi-flight-case/raw/master/dtb/astropi-keys.dtbo --no-check-certificate
+
+
+sudo nano /boot/config.txt
+Go to the bottom of the file and enter the two lines below:
+
+dtoverlay=rpi-sense
+dtoverlay=astropi-keys
+Press Ctrl + O then Enter to save, followed by Ctrl + X to quit.
+
+Now reboot the Astro Pi.
+
+These are based on instructions from https://www.raspberrypi.org/learning/astro-pi-flight-case/worksheet2/ 
+
+The command arobota.py can now be run and the arm controlled using the buttons on the Astro Pi.
+
 Programming style
 =================
 
