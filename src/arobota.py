@@ -23,8 +23,6 @@ from sense_hat import SenseHat
 from pygame.locals import *
 
 
-
-
 def status_led (status) :
     if (status == 1): 
         status_color = (0,255,0)
@@ -127,7 +125,7 @@ while running:
     elif (currentmode > 5) :
         currentmode = 5
         
-    # In mode 0 ignore actions
+    # In mode 0 have different actions
     if (currentmode != 0):
         
         prev_action = current_action
@@ -139,7 +137,6 @@ while running:
                 current_action[0] += temp_action[0]
                 current_action[1] += temp_action[1]
                 current_action[2] += temp_action[2]
-                #print ("instruction =" + cmds['up'][currentmode])
             
         # check to see if changed
         if (prev_action[0] != current_action[0] or prev_action[1] != current_action[1] or prev_action[2] != current_action[2]):
@@ -147,6 +144,11 @@ while running:
             ROBOTA.action(current_action)
             # update previous action
             prev_action = current_action
+    # Mode 0 - up = connect / reconnect  
+    else :
+        if (buttons_pressed['up'] == 1 && ROBOTA.status() == 0):
+            ROBOTA.connect()
+            ROBOTA.flash_light()
         
     sense.show_letter(str(currentmode))
     status_led (ROBOTA.status())
