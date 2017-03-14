@@ -89,7 +89,7 @@ sudo python3 setup.py install
 sudo python3 setup.py install
 ```
 
-###Python 3 pygame (optional)
+### Python 3 pygame (optional)
 
 Whilst pygame will work on Python 3 it is not necessarily available through the distributions repositories. These instructions explain how to install it manually.
 This uses the current development version as at the time of writing the official release is 1.9.1 which will not work with Python 3.
@@ -107,7 +107,7 @@ python3 setup.py build
 sudo python3 setup.py install
 ```
 
-###Installing GRobotArm
+### Installing GRobotArm
 
 Download the source code
 ```bash
@@ -124,7 +124,7 @@ sudo cp robot-arm/src/10-robotarm.rules /etc/udev/rules.d/
 
 You can now launch the app by changing to the src directory and running grobota.py
 
-###Adding a start menu button
+### Adding a start menu button
 
 If installing on a Raspberry Pi then the following will add the robotarm software to the LXDE start menu. This will only work on a Raspberry Pi using the default pi username.
 
@@ -134,7 +134,7 @@ If installing on a Raspberry Pi then the following will add the robotarm softwar
 
 (or if running an older version of Raspbian prior to September 2015 use setupmenu-old.sh instead).
 
-###Installing ARobotArm
+### Installing ARobotArm
 
 Also included is a program to control a robot-arm using the Astro Pi buttons and the Sense Hat. This can be run using arobota.py.
 As there are more joints than buttons the program uses a mode-based interface. You will first need to use the A and B buttons to change mode (modes 1 to 5 control various motors) and then use the appropriate cursor buttons on the astro pi. 
