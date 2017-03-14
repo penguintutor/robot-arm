@@ -204,6 +204,25 @@ Line 2: [url=http://www.penguintutor.com]www.penguintutor.com[/url]
 
 
 
+Astro-Pi 
+========
+
+Also included is a program to control a robot-arm using the Astro Pi buttons.
+This can be run using arobota.py.
+As there are more joints than buttons the program uses a mode-based interface.
+You will first need to use the A and B buttons to change mode (modes 1 to 5 control
+various motors) and then use the appropriate cursor buttons on the astro pi. 
+
+To have this start automatically create a file in ~/.config/autostart called
+robot-arm.desktop with the following entry
+
+[Desktop Entry]
+Name=Astro Robot Arm
+Exec=/home/pi/robot-arm/src/arobota.py
+Path=/home/pi/robot-arm/src/
+Type=application
+
+
 Todo / Future development
 =========================
 
