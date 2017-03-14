@@ -146,7 +146,7 @@ while running:
             prev_action = current_action
     # Mode 0 - up = connect / reconnect  
     else :
-        if (buttons_pressed['up'] == 1 && ROBOTA.status() == 0):
+        if (buttons_pressed['up'] == 1 and ROBOTA.status() == 0):
             ROBOTA.connect()
             ROBOTA.flash_light()
         
