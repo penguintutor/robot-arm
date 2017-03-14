@@ -29,24 +29,29 @@ The Raspberry Pi is the easiest platform to install this on as it includes Pytho
 
 
 First download pyusb using:
-
+```bash
 wget https://github.com/walac/pyusb/tarball/master -O walac-pyusb.tar.gz
-
+```
 
 unzip and cd to the directory 
 (actual directory name depends upon the latest version of pyusb) 
 
+```bash
 tar -xvzf walac-pyusb.tar.gz
 cd walac-pyusb-*
 
 sudo python3 setup.py install
+```
 
 Download the source code
+```bash
 git clone https://github.com/penguintutor/robot-arm.git
-
+```
 
 Copy the Udev USB rule using
+```bash
 sudo cp robot-arm/src/10-robotarm.rules /etc/udev/rules.d/
+```
 
 You can now launch the app by changing to the src directory and running grobota.py
 
@@ -66,19 +71,23 @@ pyusb can be installed manually.
 
 First download using:
 
+```bash
 wget https://github.com/walac/pyusb/tarball/master -O walac-pyusb.tar.gz
-
+```
 
 unzip and cd to the directory 
 (actual file and directory names depend upon the latest version of pyusb) 
 
+```bash
 tar -xvzf walac-pyusb.tar.gz
 cd walac-pyusb-*
 
-sudo python setup.py install
-(and / or for Python 3)
 sudo python3 setup.py install
-
+```
+(and / or for Python 2)
+```bash
+sudo python3 setup.py install
+```
 
 ###Python 3 pygame (optional)
 
@@ -89,25 +98,29 @@ Install the pre-requisites using:
 sudo apt-get install python3-dev mercurial libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev libjpeg-dev 
 
 Download pygame using:
-
+```bash
 hg clone https://bitbucket.org/pygame/pygame
 
 cd pygame
 
 python3 setup.py build
 sudo python3 setup.py install
-
+```
 
 ###Installing GRobotArm
 
 Download the source code
+```bash
 git clone https://github.com/penguintutor/robot-arm.git
+```
 
 You can now launch the app by changing to the src directory and running grobota.py
 
 If you get an error regarding permissions then you may also need to add the udev rule
 
+```bash
 sudo cp robot-arm/src/10-robotarm.rules /etc/udev/rules.d/
+```
 
 You can now launch the app by changing to the src directory and running grobota.py
 
@@ -115,25 +128,31 @@ You can now launch the app by changing to the src directory and running grobota.
 
 If installing on a Raspberry Pi then the following will add the robotarm software to the LXDE start menu. This will only work on a Raspberry Pi using the default pi username.
 
+```bash
 /opt/robotarm/src/startmenu/setupmenu.sh
+```
 
 (or if running an older version of Raspbian prior to September 2015 use setupmenu-old.sh instead).
 
 ###Installing ARobotArm
 
-The ARobotArm software adds support for the AstroPi buttons connected through a Raspberry Pi Sense Hat.
+Also included is a program to control a robot-arm using the Astro Pi buttons and the Sense Hat. This can be run using arobota.py.
+As there are more joints than buttons the program uses a mode-based interface. You will first need to use the A and B buttons to change mode (modes 1 to 5 control various motors) and then use the appropriate cursor buttons on the astro pi. 
 
 The following additional steps are required:
 
+```bash
 cd /boot/overlays
 sudo wget https://github.com/raspberrypilearning/astro-pi-flight-case/raw/master/dtb/astropi-keys.dtbo --no-check-certificate
 
-
 sudo nano /boot/config.txt
+```
 Go to the bottom of the file and enter the two lines below:
 
+```
 dtoverlay=rpi-sense
 dtoverlay=astropi-keys
+```
 Press Ctrl + O then Enter to save, followed by Ctrl + X to quit.
 
 Now reboot the Astro Pi.
@@ -141,6 +160,18 @@ Now reboot the Astro Pi.
 These are based on instructions from https://www.raspberrypi.org/learning/astro-pi-flight-case/worksheet2/ 
 
 The command arobota.py can now be run and the arm controlled using the buttons on the Astro Pi.
+
+
+To have this start automatically create a file in ~/.config/autostart called
+robot-arm.desktop with the following entry
+
+```
+[Desktop Entry]
+Name=Astro Robot Arm
+Exec=/home/pi/robot-arm/src/arobota.py
+Path=/home/pi/robot-arm/src/
+Type=application
+```
 
 Programming style
 =================
@@ -199,29 +230,10 @@ only one link per line - and link is applied to the entire line
 
 This should be used with just the url on that line eg. 
 
+```
 Line 1: See below for more information
 Line 2: [url=http://www.penguintutor.com]www.penguintutor.com[/url]
-
-
-
-Astro-Pi 
-========
-
-Also included is a program to control a robot-arm using the Astro Pi buttons.
-This can be run using arobota.py.
-As there are more joints than buttons the program uses a mode-based interface.
-You will first need to use the A and B buttons to change mode (modes 1 to 5 control
-various motors) and then use the appropriate cursor buttons on the astro pi. 
-
-To have this start automatically create a file in ~/.config/autostart called
-robot-arm.desktop with the following entry
-
-[Desktop Entry]
-Name=Astro Robot Arm
-Exec=/home/pi/robot-arm/src/arobota.py
-Path=/home/pi/robot-arm/src/
-Type=application
-
+```
 
 Todo / Future development
 =========================
@@ -238,5 +250,4 @@ Although this program is my own work acknowledgements go to the following people
 
 Al Sweigart for the great books on Invent with Python http://inventwithpython.com/ which has been a great help with learning Pygame and influential in some of the techniques used.
 
-Peter Lavelle whose MagPi article (issue 14) http://www.themagpi.com/en/issue/14 helped with the initial setup of the robot arm and usb modules and Jamie Scott whose WikiHow article http://www.wikihow.com/Use-a-USB-Robotic-Arm-with-a-Raspberry-Pi-%28Maplin%29 provided 
-the instructions required to communicate with the robot arm.
+Peter Lavelle whose MagPi article (issue 14) http://www.themagpi.com/en/issue/14 helped with the initial setup of the robot arm and usb modules and Jamie Scott whose WikiHow article http://www.wikihow.com/Use-a-USB-Robotic-Arm-with-a-Raspberry-Pi-%28Maplin%29 provided the instructions required to communicate with the robot arm.
