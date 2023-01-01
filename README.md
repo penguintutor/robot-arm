@@ -30,25 +30,26 @@ The Raspberry Pi is the easiest platform to install this on as it includes Pytho
 
 First download pyusb using:
 
-wget https://github.com/walac/pyusb/tarball/master -O walac-pyusb.tar.gz
+  wget https://github.com/walac/pyusb/tarball/master -O walac-pyusb.tar.gz
 
 
 unzip and cd to the directory 
 (actual directory name depends upon the latest version of pyusb) 
 
-tar -xvzf walac-pyusb.tar.gz
-cd walac-pyusb-*
+  tar -xvzf walac-pyusb.tar.gz
+  cd walac-pyusb-*
 
-sudo python3 setup.py install
+  sudo python3 setup.py install
 
 Download the source code
-git clone https://github.com/penguintutor/robot-arm.git
+  cd
+  git clone https://github.com/penguintutor/robot-arm.git
 
 
 Copy the Udev USB rule using
-sudo cp robot-arm/src/10-robotarm.rules /etc/udev/rules.d/
+  sudo cp robot-arm/src/10-robotarm.rules /etc/udev/rules.d/
 
-You can now launch the app by changing to the src directory and running grobota.py
+You can now launch the app by changing to the src directory and running ./grobota.py
 
 
 ## Install for other Linux distributions
@@ -59,59 +60,45 @@ These instructions are for Debian (or Ubuntu) based distributions the commands m
 
 The first two can be installed using the instructions below (this does not setup pygame for Python 3 though only Python 2):
 
-sudo apt-get install python-pygame libusb-1.0-0
+  sudo apt-get install python-pygame libusb-1.0-0
 
 
 pyusb can be installed manually.
 
 First download using:
 
-wget https://github.com/walac/pyusb/tarball/master -O walac-pyusb.tar.gz
+  wget https://github.com/walac/pyusb/tarball/master -O walac-pyusb.tar.gz
 
 
 unzip and cd to the directory 
 (actual file and directory names depend upon the latest version of pyusb) 
 
-tar -xvzf walac-pyusb.tar.gz
-cd walac-pyusb-*
+  tar -xvzf walac-pyusb.tar.gz
+  cd walac-pyusb-*
 
-sudo python setup.py install
+  sudo python setup.py install
 (and / or for Python 3)
-sudo python3 setup.py install
+  sudo python3 setup.py install
 
 
-###Python 3 pygame (optional)
+### Python 3 pygame 
 
-Whilst pygame will work on Python 3 it is not necessarily available through the distributions repositories. These instructions explain how to install it manually.
-This uses the current development version as at the time of writing the official release is 1.9.1 which will not work with Python 3.
+Download pygame using the instructions at: [Pygame Getting Started](https://www.pygame.org/wiki/GettingStarted)
 
-Install the pre-requisites using:
-sudo apt-get install python3-dev mercurial libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev libjpeg-dev 
-
-Download pygame using:
-
-hg clone https://bitbucket.org/pygame/pygame
-
-cd pygame
-
-python3 setup.py build
-sudo python3 setup.py install
-
-
-###Installing GRobotArm
+### Installing GRobotArm
 
 Download the source code
-git clone https://github.com/penguintutor/robot-arm.git
+  git clone https://github.com/penguintutor/robot-arm.git
 
 You can now launch the app by changing to the src directory and running grobota.py
 
 If you get an error regarding permissions then you may also need to add the udev rule
 
-sudo cp robot-arm/src/10-robotarm.rules /etc/udev/rules.d/
+  sudo cp robot-arm/src/10-robotarm.rules /etc/udev/rules.d/
 
 You can now launch the app by changing to the src directory and running grobota.py
 
-###Adding a start menu button
+### Adding a start menu button
 
 If installing on a Raspberry Pi then the following will add the robotarm software to the LXDE start menu. This will only work on a Raspberry Pi using the default pi username.
 
