@@ -49,6 +49,7 @@ Download the source code
 
 
 Copy the Udev USB rule using
+
   sudo cp robot-arm/src/10-robotarm.rules /etc/udev/rules.d/
 
 You can now launch the app by changing to the src directory and running ./grobota.py
