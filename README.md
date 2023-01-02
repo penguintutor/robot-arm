@@ -33,16 +33,18 @@ First download pyusb using:
   wget https://github.com/walac/pyusb/tarball/master -O walac-pyusb.tar.gz
 
 
-unzip and cd to the directory 
+unzip (untar) and cd to the directory 
 (actual directory name depends upon the latest version of pyusb) 
 
   tar -xvzf walac-pyusb.tar.gz
+  
   cd walac-pyusb-*
 
   sudo python3 setup.py install
 
 Download the source code
   cd
+  
   git clone https://github.com/penguintutor/robot-arm.git
 
 
